@@ -4,7 +4,7 @@ class Timer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      seconds: 10
+      seconds: this.props.seconds
     };
 
     const intervalID = window.setInterval(() => {
@@ -19,7 +19,7 @@ class Timer extends React.Component {
   }
   render() {
     return (
-      <div>残り時間：{this.state.seconds} </div>
+      <div>残り時間：{this.state.seconds}/{this.props.seconds} </div>
     )
   }
 }
