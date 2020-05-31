@@ -1,15 +1,44 @@
 import React from 'react';
 import './App.css';
 import Button from './Button/Button';
-import Timer from './Timer/Timer';
+// import Timer from './Timer/Timer';
 import Counter from './Counter/Counter';
+
+const API_URL = 'https://opentdb.com/api.php?amount=10';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedId: false
+      isLoggedId: false,
+      loading: false,
+      data: null
+      
     };
+  }
+
+  componentDidMount() {
+    this.requestData();
+  }
+
+  async requestData() {
+    this.setState({
+      loading: true
+    });
+
+    let firstQuizData;
+    try {
+      const response = await window.fetch(API_URL);
+      const data = await response.json();
+      console.log(data);
+      firstQuizData = data.response[0];
+    } catch (error) {
+      firstQuizData = null;
+    }
+    this.setState({
+      loading: false,
+      data: firstQuizData
+    })
   }
 
   login() {
@@ -26,11 +55,13 @@ class App extends React.Component {
         <div className="App">
           <PrivatePage />
           <button onClick={() => {this.logout()}}>ログアウト</button>
+          { this.renderData()}
+          { this.renderRequestButton()}
           <h1>カウンター</h1>
           <Counter  />
           <h1>タイマー</h1>
-          <Timer seconds={30} />
-          <Timer seconds={50} />
+          {/* <Timer seconds={30} /> */}
+          {/* <Timer seconds={50} /> */}
           <Button>ボタン１</Button>
           <Button>ボタン２</Button>
           <Button>ボタン３</Button>
@@ -44,6 +75,25 @@ class App extends React.Component {
         <button onClick={() => {this.login()}}>ログイン</button>
       </div>
     )
+  }
+
+  renderData() {
+    if (this.state.loading) {
+      return <p>データ取得中...</p>;
+    }
+    if (!this.state.loading && !this.state.data) {
+      return <p>データなし</p>
+    }
+    
+    return <p>{ JSON.stringify( this.state.data)} </p>
+  }
+
+  renderRequestButton() {
+    if (this.state.loading) {
+      return <button disabled> データ取得中...</button>
+    }
+    
+    return <button onClick={ () => { this.requestData() }}>データを取得する</button>
   }
 }
 
