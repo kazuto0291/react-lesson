@@ -1,15 +1,17 @@
 .Button {
-  color: #fff;
-  font-weight: bold;
-  background-color: #f00;
-  border-radius: 5px;
-  text-align: center;
+  background-color: red;
+  color: wheat;
   display: inline-block;
+  border-radius: 10px;
+  margin-right: 10px;
   padding: 10px;
-  margin-right: 5px;
+  cursor: pointer;
 }
 
 .Button:hover {
-  color:rgb(206, 206, 206);
-  background-color: rgb(135, 0, 0);
+  background-color: tomato;
+}
+
+.Button:active {
+  background: yellow;
 }

@@ -1,22 +1,14 @@
 import React from 'react';
-import './button.css';
+import './Button.css'
 
 class Button extends React.Component {
-  constructor(props) {
-    super(props)
-    this.value = 11;
-  }
-  render() {
-    return (
-      <div className="Button">
-         { this.props.children } {this.value}
-      </div>
-    )
-  }
+      render() {
+        return (
+          <div className="Button">
+            {this.props.children}
+          </div>
+        )
+      }
 }
 
-
-
-
-export default Button;
-
+export default Button
