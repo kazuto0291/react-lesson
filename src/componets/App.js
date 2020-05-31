@@ -7,6 +7,7 @@ function App() {
     <div className="App">
       <h1>Hello, World</h1>
       <p>こんにちは世界！</p>
+      {/* <Button title="ボタン１2" /> */}
       <Button>ボタン１ part2</Button>
       <Button>ボタン１ part2</Button>
     </div>

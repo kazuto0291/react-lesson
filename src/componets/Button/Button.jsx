@@ -1,12 +1,22 @@
 import React from 'react';
 import './button.css';
 
-const Button = (props) => {
-  return (
-    <div className='Button'>
-      {props.children}
-    </div>
-  );
+class Button extends React.Component {
+  constructor(props) {
+    super(props)
+    this.value = 11;
+  }
+  render() {
+    return (
+      <div className="Button">
+         { this.props.children } {this.value}
+      </div>
+    )
+  }
 }
 
+
+
+
 export default Button;
+
