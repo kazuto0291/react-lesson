@@ -1,0 +1,15 @@
+.Button-container {
+  background-color: red;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.Button-container:hover {
+  background-color: tomato;
+}
+
+.Button-container:active {
+  background-color: yellow;
+}
