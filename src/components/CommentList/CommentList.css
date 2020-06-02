@@ -1,0 +1,15 @@
+ul {
+  padding: 0;
+}
+
+.Comment {
+  border: 1px solid black;
+  cursor: pointer;
+  margin-bottom: 5px;
+  list-style: none;
+  padding: 10px;
+}
+
+.Comment:hover {
+  background-color: skyblue;
+}

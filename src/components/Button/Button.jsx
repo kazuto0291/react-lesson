@@ -7,8 +7,10 @@ class Button extends React.Component {
     this.onClickHandler = this.onClickHandler.bind(this);
   }
 
-  onClickHandler(event) {
-    this.props.onClickHandler(event);
+  onClickHandler() {
+    if (typeof this.props.onClickHandler === 'function') {
+      this.props.onClickHandler();
+    }
   }
 
   render() {
