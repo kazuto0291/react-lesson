@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../Button/Button';
 import './Form.css';
 
 class Form extends React.Component {
@@ -19,7 +20,19 @@ class Form extends React.Component {
   }
 
   sendBodyToParent() {
+    const body = this.state.body.trim();
+    if (!body) {
+      alert('何も入力していません');
+      return;
+    }
 
+    if (typeof this.props.onSubmit === 'function') {
+      this.props.onSubmit(body);
+    }
+
+    this.setState({
+      body: ''
+    });
   }
 
   render() {
@@ -34,6 +47,7 @@ class Form extends React.Component {
             onChange={this.handleChange}
             ></textarea>
         </div>
+        <Button onClickHandler={this.sendBodyToParent}>コメントする</Button>
       </div>
     )
   }
