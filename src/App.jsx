@@ -2,23 +2,31 @@ import React from 'react';
 import CommentList from './components/CommentList/CommentList';
 import Form from './components/From/Form';
 
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      comments: ['初期コメント']
+    }
+    this.addComment =this.addComment.bind(this);
+  }
 
-function App() {
-  const comments = [
-    'テスト１',
-    'テスト2',
-    'テスト3',
-    'テスト4'
-  ]
-  return (
-    <div>
-      <Form onSubmit={(body) => {
-        console.log('body', body)
-      }} />
-      <CommentList comments={comments} />
-    </div>
-  )
+  addComment(comment) {
+    this.setState({
+      comments:[...this.state.comments, comment]
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <Form onSubmit={this.addComment} />
+        <CommentList comments={this.state.comments} />
+      </div>
+    )
+  }
 }
+
 
 
 
