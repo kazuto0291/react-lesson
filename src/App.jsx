@@ -33,7 +33,7 @@ class App extends React.Component {
             <li><Link to="/about/">about</Link></li>
           </ul>
           <Route path="/" exact component={Home} />
-          <Route path="/about/" exact component={About} />
+          <Route path="/about/:id" exact component={About} />
         </Router>
         <Form onSubmit={this.addComment} />
         <CommentList comments={this.state.comments} />
